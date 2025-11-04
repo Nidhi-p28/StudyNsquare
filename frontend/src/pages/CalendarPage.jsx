@@ -8,15 +8,22 @@ function CalendarPage() {
   const [tasks, setTasks] = useState([]);
   const navigate = useNavigate();
 
-  // Fetch tasks for selected date
+  // Fetch tasks for the selected date
   useEffect(() => {
-    const formattedDate = date.toISOString().split("T")[0];
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  if (!storedUser?._id) return;
 
-    fetch(`http://localhost:5000/api/tasks?date=${formattedDate}`)
-      .then((res) => res.json())
-      .then((data) => setTasks(data))
-      .catch((err) => console.error("Error fetching tasks:", err));
-  }, [date]);
+  const formattedDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
+  .toISOString()
+  .split("T")[0];
+
+
+  fetch(`http://localhost:5000/api/tasks/date/${storedUser._id}/${formattedDate}`)
+    .then((res) => res.json())
+    .then((data) => setTasks(data))
+    .catch((err) => console.error("Error fetching tasks:", err));
+}, [date]);
+
 
   // Redirect to /tasks page
   const handleAddTask = () => {
@@ -43,8 +50,9 @@ function CalendarPage() {
                 key={task._id}
                 className="p-3 bg-white border border-gray-200 rounded-lg shadow-md"
               >
-                <strong className="text-blue-600">{task.title}</strong>
-                <p className="text-gray-600">{task.description}</p>
+                <strong className="text-blue-600">{task.taskName}</strong>
+<p className="text-gray-600">{task.relatedSubject}</p>
+<p className="text-gray-500">Deadline: {new Date(task.deadline).toLocaleDateString()}</p>
               </li>
             ))}
           </ul>

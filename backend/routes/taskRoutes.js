@@ -55,5 +55,30 @@ router.get("/date/:userId/:date", async (req, res) => {
   }
 });
 
+// ✅ Get tasks by date (for calendar)
+router.get("/", async (req, res) => {
+  try {
+    const { date, userId } = req.query;
+
+    if (!date || !userId) {
+      return res.status(400).json({ error: "Date and userId are required" });
+    }
+
+    const dayStart = new Date(date);
+    dayStart.setHours(0, 0, 0, 0);
+    const dayEnd = new Date(date);
+    dayEnd.setHours(23, 59, 59, 999);
+
+    const tasks = await Task.find({
+      userId,
+      deadline: { $gte: dayStart, $lte: dayEnd },
+    });
+
+    res.json(tasks);
+  } catch (err) {
+    console.error("Error fetching tasks by date:", err);
+    res.status(500).json({ message: "Server Error" });
+  }
+});
 
 export default router;

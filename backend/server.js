@@ -5,7 +5,7 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import taskRoutes from "./routes/taskRoutes.js";
 import plannerRoutes from "./routes/plannerRoutes.js";
-import Tasks from "../frontend/src/pages/Tasks.jsx";
+import sessionRoutes from "./routes/SessionRoutes.js";
 
 dotenv.config();
 
@@ -24,7 +24,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/tasks", taskRoutes);
 // Planner routes
 app.use("/api/planner", plannerRoutes);
-
+app.use("/api/sessions", sessionRoutes);
 
 // MongoDB connection
 const PORT = process.env.PORT || 5000;
