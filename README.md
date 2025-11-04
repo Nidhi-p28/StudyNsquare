@@ -15,6 +15,7 @@ The "Nsquare" represents growth and momentum — the idea that when you organise
 
 
 
+
 🧑‍💻 User Features
 
 1. User Authentication (JWT-based Login & Signup)  
@@ -57,6 +58,7 @@ The "Nsquare" represents growth and momentum — the idea that when you organise
 
 
 
+
 🧩 Prerequisites
 Before running this project, make sure you have the following installed:
 1. Node.js
@@ -69,6 +71,7 @@ Verify installation:
 
 2.MongoDB (local or cloud)
 You can use MongoDB Atlas for cloud database setup.
+
 
 
 
