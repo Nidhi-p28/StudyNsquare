@@ -73,8 +73,10 @@ The "Nsquare" represents growth and momentum — the idea that when you organise
 ```
 
 3. Create a .env file in /backend:
+   ```.env file
    PORT=5000
    MONGO_URL=your_mongodb_connection_string
+   ```
 
 4. Start the backend
 ```bash
