@@ -49,7 +49,7 @@ The "Nsquare" represents growth and momentum — the idea that when you organise
 7. Themes
   - Day/Night Mode toggle for comfortable studying at any time.
 
-8. Quick To-Do List**
+8. Quick To-Do List
   - Add quick notes or short-term goals that don’t belong to a subject or task.
 
 9. AI Assistant
