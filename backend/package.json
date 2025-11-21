@@ -16,6 +16,7 @@
     "mongoose": "^7.6.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "groq-sdk": "^0.7.0"
   }
 }
