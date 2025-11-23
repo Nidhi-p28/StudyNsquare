@@ -29,7 +29,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/register", {
+      const response = await axios.post("https://studynsquare.onrender.com/api/auth/register", {
         name: form.name,
         email: form.email,
         password: form.password,

@@ -24,7 +24,7 @@ export default function Tasks() {
     if (!userId) return;
     const fetchTasks = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/tasks/${userId}`);
+        const res = await axios.get(`https://studynsquare.onrender.com/api/tasks/${userId}`);
         setTasks(res.data);
       } catch (err) {
         console.error("Error fetching tasks:", err);
@@ -44,7 +44,7 @@ export default function Tasks() {
     try {
       const newTask = { ...formData, userId };
       console.log("📩 Sending new task:", newTask);
-      const res = await axios.post("http://localhost:5000/api/tasks", newTask);
+      const res = await axios.post("https://studynsquare.onrender.com/api/tasks", newTask);
       setTasks([...tasks, res.data]);
       setFormData({
         taskName: "",
@@ -64,7 +64,7 @@ export default function Tasks() {
   // Mark task completed
   const markCompleted = async (id) => {
     try {
-      const res = await axios.put(`http://localhost:5000/api/tasks/${id}`, {
+      const res = await axios.put(`https://studynsquare.onrender.com/api/tasks/${id}`, {
         status: "Completed",
       });
       setTasks(tasks.map((task) => (task._id === id ? res.data : task)));

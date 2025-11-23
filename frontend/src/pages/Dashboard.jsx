@@ -121,27 +121,27 @@ export default function Dashboard() {
 
       // 1) tasks with deadline exactly today
       const tasksRes = await axios.get(
-        `http://localhost:5000/api/tasks/date/${userId}/${todayKey}`
+        `https://studynsquare.onrender.com/api/tasks/date/${userId}/${todayKey}`
       );
 
       // 2) planners for today (either date or dailyGoal ranges)
       const plannersRes = await axios.get(
-        `http://localhost:5000/api/planner/date/${userId}/${todayKey}`
+        `https://studynsquare.onrender.com/api/planner/date/${userId}/${todayKey}`
       );
 
       // 3) all tasks (for weekly analytics)
       const allTasksRes = await axios.get(
-        `http://localhost:5000/api/tasks/${userId}`
+        `https://studynsquare.onrender.com/api/tasks/${userId}`
       );
 
       // 4) all planners
       const allPlannersRes = await axios.get(
-        `http://localhost:5000/api/planner/${userId}`
+        `https://studynsquare.onrender.com/api/planner/${userId}`
       );
 
       // 5) all study sessions (used for completed hours)
       const allSessionsRes = await axios.get(
-        `http://localhost:5000/api/sessions/user/${userId}`
+        `https://studynsquare.onrender.com/api/sessions/user/${userId}`
       );
 
       setTodayTasks(tasksRes.data || []);

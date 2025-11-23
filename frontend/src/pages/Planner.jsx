@@ -42,7 +42,7 @@ const Planner = () => {
   useEffect(() => {
     if (!userId) return;
     axios
-      .get(`http://localhost:5000/api/planner/${userId}`)
+      .get(`https://studynsquare.onrender.com/api/planner/${userId}`)
       .then((res) => setPlanner(res.data || []))
       .catch((err) => console.error("Error fetching planner:", err));
   }, [userId]);
@@ -52,7 +52,7 @@ const Planner = () => {
     if (!userId) return;
     try {
       // optional: restrict range with ?start=&end=
-      const res = await axios.get(`http://localhost:5000/api/sessions/user/${userId}`);
+      const res = await axios.get(`https://studynsquare.onrender.com/api/sessions/user/${userId}`);
       setSessions(res.data || []);
     } catch (err) {
       console.error("Error fetching sessions:", err);
@@ -82,14 +82,14 @@ const Planner = () => {
 
       if (editingId) {
         const res = await axios.put(
-          `http://localhost:5000/api/planner/${editingId}`,
+          `https://studynsquare.onrender.com/api/planner/${editingId}`,
           dataToSend
         );
         setPlanner(planner.map((p) => (p._id === editingId ? res.data : p)));
         setEditingId(null);
         toast.success("Planner updated");
       } else {
-        const res = await axios.post("http://localhost:5000/api/planner", dataToSend);
+        const res = await axios.post("https://studynsquare.onrender.com/api/planner", dataToSend);
         setPlanner([...planner, res.data]);
         toast.success("Planner entry added");
       }
@@ -130,7 +130,7 @@ const Planner = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this entry?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/planner/${id}`);
+      await axios.delete(`https://studynsquare.onrender.com/api/planner/${id}`);
       setPlanner(planner.filter((p) => p._id !== id));
       toast.success("Deleted");
     } catch (err) {
@@ -177,7 +177,7 @@ const Planner = () => {
         hours: Number(logData.hours),
         notes: logData.notes || "",
       };
-      await axios.post("http://localhost:5000/api/sessions", payload);
+      await axios.post("https://studynsquare.onrender.com/api/sessions", payload);
       toast.success("Logged study hours");
       closeLogUI();
       // refresh sessions so UI updates

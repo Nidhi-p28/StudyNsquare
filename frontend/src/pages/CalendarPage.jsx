@@ -18,7 +18,7 @@ function CalendarPage() {
   .split("T")[0];
 
 
-  fetch(`http://localhost:5000/api/tasks/date/${storedUser._id}/${formattedDate}`)
+  fetch(`https://studynsquare.onrender.com/api/tasks/date/${storedUser._id}/${formattedDate}`)
     .then((res) => res.json())
     .then((data) => setTasks(data))
     .catch((err) => console.error("Error fetching tasks:", err));

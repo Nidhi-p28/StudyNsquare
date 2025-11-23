@@ -6,7 +6,7 @@ const TestConnection = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/test") // 👈 Full backend URL
+      .get("https://studynsquare.onrender.com/api/test") // 👈 Full backend URL
       .then((response) => {
         setMessage(response.data.message);
       })
